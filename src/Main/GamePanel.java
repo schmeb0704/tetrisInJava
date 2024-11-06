@@ -8,12 +8,17 @@ public class GamePanel extends JPanel implements Runnable{
     public static final int HEIGHT = 720;
     final int FPS = 60;
     Thread gameThread;
+    PlayManager playManager;
+    protected static int gamePanelCount = 0;
 
     public GamePanel(){
         //panel settings
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         this.setBackground(Color.black);
         this.setLayout(null);
+        playManager = new PlayManager();
+
+        gamePanelCount++;
     }
 
     public void launchGame(){
@@ -21,7 +26,7 @@ public class GamePanel extends JPanel implements Runnable{
         gameThread.start();
     }
 
-    @override
+    @Override
     public void run(){
         //game loop
         double drawInterval = 1000000000/FPS;
@@ -42,9 +47,13 @@ public class GamePanel extends JPanel implements Runnable{
             }
         }
     }
-    private void update(){}
+    private void update(){
+        playManager.update();
+    }
     public void paintComponent(Graphics graphics){
         super.paintComponent(graphics);
+        Graphics2D graphics2 = (Graphics2D)graphics;
+        playManager.draw(graphics2);
     }
 
 
