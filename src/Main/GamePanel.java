@@ -50,7 +50,9 @@ public class GamePanel extends JPanel implements Runnable{
         }
     }
     private void update(){
-        playManager.update();
+       if(!KeyHandler.pausePressed) {
+           playManager.update();
+       }
     }
     public void paintComponent(Graphics graphics){
         super.paintComponent(graphics);

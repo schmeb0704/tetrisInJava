@@ -79,6 +79,15 @@ public class PlayManager {
         if(currentMino != null){
             currentMino.draw(graphics);
         }
+
+        // draw paused text
+        graphics.setColor(Color.yellow);
+        graphics.setFont(graphics.getFont().deriveFont(50f));
+        if(KeyHandler.pausePressed){
+            x = left_x + 70;
+            y = top_y + 320;
+            graphics.drawString("PAUSED", x, y);
+        }
     }
 
 }
