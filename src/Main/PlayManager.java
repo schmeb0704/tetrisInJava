@@ -4,7 +4,9 @@ package Main;
 // handles gameplay actions such as deleting lines, adding scores, etc.
 //
 
+import Mino.*;
 import java.awt.*;
+import Mino.Block;
 
 public class PlayManager {
     // main play area
@@ -15,16 +17,30 @@ public class PlayManager {
     public static int top_y;
     public static int bottom_y;
 
+    //Mino
+    Mino currentMino;
+    final int MINO_START_X;
+    final int MINO_START_Y;
+
     public PlayManager(){
         // Main play Area frame
         left_x = (GamePanel.WIDTH/2) - (WIDTH/2); // (1280/2) - (360/2) = 460
         right_x = left_x + WIDTH;
         top_y = 50;
         bottom_y = top_y + HEIGHT;
+
+        MINO_START_X = left_x + (WIDTH/2) - Block.SIZE;
+        MINO_START_Y = top_y +  Block.SIZE;
+
+        // Set starting Mino
+        currentMino = new Mino_L();
+        currentMino.setXY(MINO_START_X, MINO_START_Y);
+
+
     }
 
     public void update(){
-
+        currentMino.update();
     }
 
     public void draw(Graphics2D graphics){
@@ -41,6 +57,11 @@ public class PlayManager {
         graphics.setFont(new Font("Arial", Font.PLAIN, 30));
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         graphics.drawString("NEXT", x+60, y+60);
+
+        //draw currentMino
+        if(currentMino != null){
+            currentMino.draw(graphics);
+        }
     }
 
 }
