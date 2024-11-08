@@ -51,17 +51,43 @@ public class Mino {
             }
         }
     }
-    public void checkRotationCollision(){}
+    public void checkRotationCollision(){
+        leftCollision = false;
+        rightCollision = false;
+        bottomCollision = false;
+        // check left collision
+        for(int i = 0; i < block.length; i++){
+            if(tempB[i].x < PlayManager.left_x){
+                leftCollision = true;
+            }
+        }
+        // check right collision
+        for(int i = 0; i < block.length; i++){
+            if(tempB[i].x + Block.SIZE >  PlayManager.right_x){
+                rightCollision = true;
+            }
+        }
+        // check bottom collision
+        for(int i = 0; i < block.length; i++){
+            if(tempB[i].y + Block.SIZE > PlayManager.bottom_y){
+                bottomCollision = true;
+            }
+        }
+
+    }
     public void updateXY(int direction){
-        this.direction = direction;
-        block[0].x = tempB[0].x;
-        block[0].y = tempB[0].y;
-        block[1].x = tempB[1].x;
-        block[1].y = tempB[1].y;
-        block[2].x = tempB[2].x;
-        block[2].y = tempB[2].y;
-        block[3].x = tempB[3].x;
-        block[3].y = tempB[3].y;
+        checkRotationCollision();
+        if(!leftCollision && !rightCollision && !bottomCollision){
+            this.direction = direction;
+            block[0].x = tempB[0].x;
+            block[0].y = tempB[0].y;
+            block[1].x = tempB[1].x;
+            block[1].y = tempB[1].y;
+            block[2].x = tempB[2].x;
+            block[2].y = tempB[2].y;
+            block[3].x = tempB[3].x;
+            block[3].y = tempB[3].y;
+        }
     }
     public void  update(){
         if(KeyHandler.upPressed){
