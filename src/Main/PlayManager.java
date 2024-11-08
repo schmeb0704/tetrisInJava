@@ -6,6 +6,7 @@ package Main;
 
 import Mino.*;
 import java.awt.*;
+import java.util.Random;
 
 public class PlayManager {
     // main play area
@@ -34,10 +35,25 @@ public class PlayManager {
         MINO_START_Y = top_y +  Block.SIZE;
 
         // Set starting Mino
-        currentMino = new Mino_Squiggly_Reverse() ;
+        currentMino = pickMino();
         currentMino.setXY(MINO_START_X, MINO_START_Y);
+    }
 
-
+    private Mino pickMino(){
+        // generate random Mino
+        Mino mino = null;
+        int i = new Random().nextInt(7);
+        mino = switch (i) {
+            case 0 -> new Mino_L();
+            case 1 -> new Mino_L_Reverse();
+            case 2 -> new Mino_Square();
+            case 3 -> new Mino_Line_Piece();
+            case 4 -> new Mino_T();
+            case 5 -> new Mino_Squiggly();
+            case 6 -> new Mino_Squiggly_Reverse();
+            default -> mino;
+        };
+        return mino;
     }
 
     public void update(){
