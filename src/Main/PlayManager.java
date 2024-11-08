@@ -6,7 +6,6 @@ package Main;
 
 import Mino.*;
 import java.awt.*;
-import Mino.Block;
 
 public class PlayManager {
     // main play area
@@ -21,6 +20,8 @@ public class PlayManager {
     Mino currentMino;
     final int MINO_START_X;
     final int MINO_START_Y;
+
+    public static int dropInterval = 60; // mino drops every 60 frames (1 second)
 
     public PlayManager(){
         // Main play Area frame
