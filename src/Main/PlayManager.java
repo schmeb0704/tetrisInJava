@@ -34,7 +34,7 @@ public class PlayManager {
         MINO_START_Y = top_y +  Block.SIZE;
 
         // Set starting Mino
-        currentMino = new Mino_L();
+        currentMino = new Mino_Squiggly_Reverse() ;
         currentMino.setXY(MINO_START_X, MINO_START_Y);
 
 
