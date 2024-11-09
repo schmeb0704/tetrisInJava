@@ -9,13 +9,13 @@ public class KeyHandler implements KeyListener {
     public void keyPressed(KeyEvent e){
         int keyCode = e.getKeyCode();
 
-        if(keyCode == KeyEvent.VK_UP){
+        if(keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_W){
             upPressed = true;
-        } else if(keyCode == KeyEvent.VK_DOWN){
+        } else if(keyCode == KeyEvent.VK_DOWN || keyCode == KeyEvent.VK_S){
             downPressed = true;
-        } else if (keyCode == KeyEvent.VK_LEFT) {
+        } else if (keyCode == KeyEvent.VK_LEFT || keyCode == KeyEvent.VK_A) {
             leftPressed = true;
-        } else if (keyCode == KeyEvent.VK_RIGHT) {
+        } else if (keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_D) {
             rightPressed = true;
         } else if (keyCode == KeyEvent.VK_CONTROL) {
             pausePressed = !pausePressed;
