@@ -12,7 +12,8 @@ public class Block extends Rectangle {
     }
 
     public void draw(Graphics2D blockGraphics){
+        final int MARGIN = 2;
         blockGraphics.setColor(blockColor);
-        blockGraphics.fillRect(x, y, SIZE, SIZE);
+        blockGraphics.fillRect(x + MARGIN, y + MARGIN, SIZE - (2 * MARGIN), SIZE - (2 * MARGIN));
     }
 }
