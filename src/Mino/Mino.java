@@ -12,7 +12,7 @@ public class Mino {
     public int direction = 1;
     boolean leftCollision, rightCollision, bottomCollision;
     public boolean active = true;
-    private boolean deactivating;
+    public boolean deactivating;
     private int deactivateCounter = 0;
 
     public void create(Color color){
