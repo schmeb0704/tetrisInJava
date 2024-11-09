@@ -58,7 +58,7 @@ public class Mino_L_Reverse extends Mino {
         tempB[2].x = block[0].x;
         tempB[2].y = block[0].y - Block.SIZE;
         tempB[3].x = block[0].x + Block.SIZE;
-        tempB[3].y = block[0].y + Block.SIZE;
+        tempB[3].y = block[0].y - Block.SIZE;
 
         updateXY(3);
     }
