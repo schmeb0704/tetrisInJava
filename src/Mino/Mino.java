@@ -12,6 +12,8 @@ public class Mino {
     public int direction = 1;
     boolean leftCollision, rightCollision, bottomCollision;
     public boolean active = true;
+    private boolean deactivating;
+    private int deactivateCounter = 0;
 
     public void create(Color color){
         block[0] = new Block(color);
@@ -128,6 +130,9 @@ public class Mino {
         }
     }
     public void  update(){
+        if(deactivating){
+            deactivating();
+        }
         if(KeyHandler.upPressed){
             switch (direction){
                 case 1: getDirection2();break;
@@ -177,7 +182,7 @@ public class Mino {
         }
 
         if(bottomCollision){
-            active = false;
+            deactivating = true;
         }else {
             autoDropCounter++;// when counter increases, mino goes down on block height
 
@@ -189,6 +194,18 @@ public class Mino {
                 autoDropCounter = 0;
             }
 
+        }
+    }
+    private void deactivating(){
+        deactivateCounter++;
+
+        if(deactivateCounter == 45){
+            deactivateCounter = 0;
+            checkMovementCollision();
+
+            if(bottomCollision){
+                active = false;
+            }
         }
     }
     public void  draw(Graphics2D minoGraphics){
